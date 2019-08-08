@@ -1,0 +1,1 @@
+curl -v http://localhost:8093/query/service -d "statement=" -u redabbo:passwd
