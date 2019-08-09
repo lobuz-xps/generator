@@ -17,8 +17,8 @@ public class GeneratorController {
     }
 
     @GetMapping
-    public String generateScripts(){
-        service.generateFile();
+    public String generateScripts(int from, int to){
+        service.generateFile(from, to);
         return "zrobione";
     }
 

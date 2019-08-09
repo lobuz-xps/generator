@@ -27,9 +27,15 @@ public class StoreConfigurationDetails {
 
     private Integer categoryId;
 
-    private String categoryImagePath;
+    private String categoryNameResponse;
 
-    private String subCategory;
+    private String subcategory;
+
+    private String subcategoryNameResponse;
+
+    private Integer subcategoryId;
+
+    private String subcategoryImagePath;
 
     private Integer discount;
 

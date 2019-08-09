@@ -11,8 +11,8 @@ public class GeneratorService {
         this.prepare = prepare;
     }
 
-    public void generateFile() {
-        prepare.prepareObjects();
+    public void generateFile(int from, int to) {
+        prepare.prepareObjects(from, to);
     }
 
 }

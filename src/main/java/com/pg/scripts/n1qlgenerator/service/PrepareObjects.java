@@ -34,7 +34,8 @@ public class PrepareObjects {
         this.generator = generator;
     }
 
-    public void prepareObjects() {
+
+    public void prepareObjects(int from, int to) {
 
         ObjectMapper mapper = new ObjectMapper();
         StoreSnapshot storeRedabbo = new StoreSnapshot();
@@ -55,7 +56,7 @@ public class PrepareObjects {
 
         long phoneNumber = 999888777;
 
-        for (int i = 750; i < 1000; i++) {
+        for (int i = from; i < to; i++) {
             List<StoreConfigurationExclusion> exclusions = new ArrayList<>();
             List<StoreConfigurationWeeklyTime> weeklyTimes = new ArrayList<>();
 
@@ -70,7 +71,7 @@ public class PrepareObjects {
             storeCompany.setPostalCode("12-3456");
             storeCompany.setTaxNumber("12345678");
             storeCompany.setFirstName(i + "first");
-            storeCompany.setModificationDate("1561538726625");
+            storeCompany.setModificationDate("2019-03-01T10:00:00.000001Z");
             storeCompany.setStreet("blada");
             storeCompany.setBankAccountNumber("82 1020 5226 0000 8399 0420 7895");
 
@@ -89,46 +90,67 @@ public class PrepareObjects {
 
             switch (catId) {
                 case 1:
-                    storeConfigurationDetails.setCategoryId(catId);
                     storeConfigurationDetails.setCategory("HANDEL -SKLEPY STACJONARNE");
-                    storeConfigurationDetails.setCategoryImagePath("category/sale.jpg");
-                    storeConfigurationDetails.setSubCategory("OBUWIE");
+                    storeConfigurationDetails.setCategoryId(catId);
+                    storeConfigurationDetails.setCategoryNameResponse("SALE");
+                    storeConfigurationDetails.setSubcategory("OBUWIE");
+                    storeConfigurationDetails.setSubcategoryId(1);
+                    storeConfigurationDetails.setSubcategoryNameResponse("SHOES_SHOP");
+                    storeConfigurationDetails.setSubcategoryImagePath("category/sale/default_handel.png");
                     break;
                 case 2:
+                    storeConfigurationDetails.setCategory("HANDEL USŁUGI");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategory("GASTRONOMIA");
-                    storeConfigurationDetails.setCategoryImagePath("category/gastronomy.jpg");
-                    storeConfigurationDetails.setSubCategory("RESTURACJA");
+                    storeConfigurationDetails.setCategoryNameResponse("SERVICES");
+                    storeConfigurationDetails.setSubcategory("FOTOGRAF");
+                    storeConfigurationDetails.setSubcategoryId(0);
+                    storeConfigurationDetails.setSubcategoryNameResponse("PHOTO_TRADE");
+                    storeConfigurationDetails.setSubcategoryImagePath("category/services/fotograf.png");
                     break;
                 case 3:
+                    storeConfigurationDetails.setCategory("HANDEL SPECJALISTYCZE");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategory("KULTURA, SZTUKA, ROZRYWKA");
-                    storeConfigurationDetails.setCategoryImagePath("category/culture.jpg");
-                    storeConfigurationDetails.setSubCategory("TEATR");
+                    storeConfigurationDetails.setCategoryNameResponse("SALE_SPECIALIST");
+                    storeConfigurationDetails.setSubcategory("APTEKA");
+                    storeConfigurationDetails.setSubcategoryId(1);
+                    storeConfigurationDetails.setSubcategoryNameResponse("MED_SERVICES");
+                    storeConfigurationDetails.setSubcategoryImagePath("category/sale-specialist/pharmacy.png");
                     break;
                 case 4:
+                    storeConfigurationDetails.setCategory("GASTRONOMIA");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategory("ZDROWIE I URODA -FITNESS, SIŁOWNIE,SPA");
-                    storeConfigurationDetails.setCategoryImagePath("category/health.jpg");
-                    storeConfigurationDetails.setSubCategory("FRYZJER");
+                    storeConfigurationDetails.setCategoryNameResponse("GASTRO");
+                    storeConfigurationDetails.setSubcategory("PIZZERIA");
+                    storeConfigurationDetails.setSubcategoryId(1);
+                    storeConfigurationDetails.setSubcategoryNameResponse("PIZZA_GASTRO");
+                    storeConfigurationDetails.setSubcategoryImagePath("category/gastro/pizza.png");
                     break;
                 case 5:
+                    storeConfigurationDetails.setCategory("KULTURA, SZTUKA");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategory("USŁUGI");
-                    storeConfigurationDetails.setCategoryImagePath("category/services.jpg");
-                    storeConfigurationDetails.setSubCategory("MYJNIE");
+                    storeConfigurationDetails.setCategoryNameResponse("CULTURE");
+                    storeConfigurationDetails.setSubcategory("KINO");
+                    storeConfigurationDetails.setSubcategoryId(0);
+                    storeConfigurationDetails.setSubcategoryNameResponse("CINEMA_ART");
+                    storeConfigurationDetails.setSubcategoryImagePath("category/culture/cinema.png");
                     break;
                 case 6:
+                    storeConfigurationDetails.setCategory("ROZRYWKA");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategory("HOTELE / APARTAMENTY,TURYSTYKA");
-                    storeConfigurationDetails.setCategoryImagePath("category/tourism.jpg");
-                    storeConfigurationDetails.setSubCategory("HOTEL");
+                    storeConfigurationDetails.setCategoryNameResponse("FUN");
+                    storeConfigurationDetails.setSubcategory("INNE");
+                    storeConfigurationDetails.setSubcategoryId(2);
+                    storeConfigurationDetails.setSubcategoryNameResponse("OTHER_ENT");
+                    storeConfigurationDetails.setSubcategoryImagePath("category/fun/default_fun.png");
                     break;
                 case 7:
+                    storeConfigurationDetails.setCategory("FITNESS, SILOWNIA, SPORTY");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategory("MARKETY,SKLEPY SIECIOWE");
-                    storeConfigurationDetails.setCategoryImagePath("category/retail.jpg");
-                    storeConfigurationDetails.setSubCategory("OBUWIE");
+                    storeConfigurationDetails.setCategoryNameResponse("SPORT");
+                    storeConfigurationDetails.setSubcategory("BASEN");
+                    storeConfigurationDetails.setSubcategoryId(2);
+                    storeConfigurationDetails.setSubcategoryNameResponse("POOL_SPORT");
+                    storeConfigurationDetails.setSubcategoryImagePath("category/sport/default.png");
                     break;
             }
 
@@ -167,7 +189,7 @@ public class PrepareObjects {
             storeRedabbo.setStoreCompany(storeCompany);
             storeRedabbo.setLanguage("pl");
             storeRedabbo.setSubscription(false);
-            storeRedabbo.setCreationDate("1561538726625");
+            storeRedabbo.setCreationDate("2018-01-01T10:00:00.000001Z");
             storeRedabbo.setTransactions(transactions);
             storeRedabbo.set_class(clazz);
             storeRedabbo.setAccounts(storeAccounts);
