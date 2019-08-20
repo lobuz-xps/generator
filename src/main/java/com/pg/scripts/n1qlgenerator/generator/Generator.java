@@ -1,9 +1,13 @@
 package com.pg.scripts.n1qlgenerator.generator;
 
+import static java.util.Objects.nonNull;
+
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -12,10 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Generator {
 
-    private final String path = "/home/maciejl/IdeaProjects/n1ql-generator/src/main/resources/file.n1ql";
+    private static final String PATH = "file.n1ql";
 
     public void createFile(List<String> elements) {
-
 
         String insertStore = "INSERT INTO `redabbo` (KEY, VALUE) ";
 
@@ -23,9 +26,16 @@ public class Generator {
         StringBuilder builder = new StringBuilder();
         builder.append(insertStore).append(elements.toString());
 
+        File file = null;
+        try {
+            file = new ClassPathResource(PATH).getFile();
+            System.out.println(file.getCanonicalPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        try (FileWriter file = new FileWriter(path)) {
-            file.write(builder.toString());
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(builder.toString());
         } catch (IOException e) {
             log.info("jeb blad: " + e);
         }

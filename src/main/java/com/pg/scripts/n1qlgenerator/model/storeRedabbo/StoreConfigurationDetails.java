@@ -23,19 +23,9 @@ public class StoreConfigurationDetails {
 
     private String description;
 
-    private String category;
-
     private Integer categoryId;
 
-    private String categoryNameResponse;
-
-    private String subcategory;
-
-    private String subcategoryNameResponse;
-
     private Integer subcategoryId;
-
-    private String subcategoryImagePath;
 
     private Integer discount;
 

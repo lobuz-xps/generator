@@ -3,6 +3,7 @@ package com.pg.scripts.n1qlgenerator.model;
 import java.util.Set;
 
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreAccount;
+import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreActivationStatus;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreCompany;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreConfiguration;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreStatus;
@@ -17,6 +18,7 @@ public class StoreSnapshot {
 
     private String loginPrefix;
     private int numberOfMembers;
+    private int tier;
     private boolean corporation;
     private StoreCompany storeCompany;
     private String language;
@@ -27,6 +29,6 @@ public class StoreSnapshot {
     private Set<StoreAccount> accounts;
     private StoreConfiguration storeConfiguration;
     private StoreStatus status;
-    private int tier;
+    private StoreActivationStatus activationStatus;
 
 }

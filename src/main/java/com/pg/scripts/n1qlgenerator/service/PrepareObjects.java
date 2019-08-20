@@ -16,6 +16,7 @@ import com.pg.scripts.n1qlgenerator.generator.IdGenerator;
 import com.pg.scripts.n1qlgenerator.model.StoreSnapshot;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreAccount;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreAccountWallet;
+import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreActivationStatus;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreCompany;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreConfiguration;
 import com.pg.scripts.n1qlgenerator.model.storeRedabbo.StoreConfigurationDetails;
@@ -90,67 +91,32 @@ public class PrepareObjects {
 
             switch (catId) {
                 case 1:
-                    storeConfigurationDetails.setCategory("HANDEL -SKLEPY STACJONARNE");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategoryNameResponse("SALE");
-                    storeConfigurationDetails.setSubcategory("OBUWIE");
                     storeConfigurationDetails.setSubcategoryId(1);
-                    storeConfigurationDetails.setSubcategoryNameResponse("SHOES_SHOP");
-                    storeConfigurationDetails.setSubcategoryImagePath("category/sale/default_handel.png");
                     break;
                 case 2:
-                    storeConfigurationDetails.setCategory("HANDEL USŁUGI");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategoryNameResponse("SERVICES");
-                    storeConfigurationDetails.setSubcategory("FOTOGRAF");
                     storeConfigurationDetails.setSubcategoryId(0);
-                    storeConfigurationDetails.setSubcategoryNameResponse("PHOTO_TRADE");
-                    storeConfigurationDetails.setSubcategoryImagePath("category/services/fotograf.png");
                     break;
                 case 3:
-                    storeConfigurationDetails.setCategory("HANDEL SPECJALISTYCZE");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategoryNameResponse("SALE_SPECIALIST");
-                    storeConfigurationDetails.setSubcategory("APTEKA");
                     storeConfigurationDetails.setSubcategoryId(1);
-                    storeConfigurationDetails.setSubcategoryNameResponse("MED_SERVICES");
-                    storeConfigurationDetails.setSubcategoryImagePath("category/sale-specialist/pharmacy.png");
                     break;
                 case 4:
-                    storeConfigurationDetails.setCategory("GASTRONOMIA");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategoryNameResponse("GASTRO");
-                    storeConfigurationDetails.setSubcategory("PIZZERIA");
                     storeConfigurationDetails.setSubcategoryId(1);
-                    storeConfigurationDetails.setSubcategoryNameResponse("PIZZA_GASTRO");
-                    storeConfigurationDetails.setSubcategoryImagePath("category/gastro/pizza.png");
                     break;
                 case 5:
-                    storeConfigurationDetails.setCategory("KULTURA, SZTUKA");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategoryNameResponse("CULTURE");
-                    storeConfigurationDetails.setSubcategory("KINO");
                     storeConfigurationDetails.setSubcategoryId(0);
-                    storeConfigurationDetails.setSubcategoryNameResponse("CINEMA_ART");
-                    storeConfigurationDetails.setSubcategoryImagePath("category/culture/cinema.png");
                     break;
                 case 6:
-                    storeConfigurationDetails.setCategory("ROZRYWKA");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategoryNameResponse("FUN");
-                    storeConfigurationDetails.setSubcategory("INNE");
                     storeConfigurationDetails.setSubcategoryId(2);
-                    storeConfigurationDetails.setSubcategoryNameResponse("OTHER_ENT");
-                    storeConfigurationDetails.setSubcategoryImagePath("category/fun/default_fun.png");
                     break;
                 case 7:
-                    storeConfigurationDetails.setCategory("FITNESS, SILOWNIA, SPORTY");
                     storeConfigurationDetails.setCategoryId(catId);
-                    storeConfigurationDetails.setCategoryNameResponse("SPORT");
-                    storeConfigurationDetails.setSubcategory("BASEN");
                     storeConfigurationDetails.setSubcategoryId(2);
-                    storeConfigurationDetails.setSubcategoryNameResponse("POOL_SPORT");
-                    storeConfigurationDetails.setSubcategoryImagePath("category/sport/default.png");
                     break;
             }
 
@@ -168,7 +134,7 @@ public class PrepareObjects {
             storeConfigurationDetails.setExclusions(exclusions);
             storeConfiguration.setDetails(storeConfigurationDetails);
 
-            storeStatus.setActive(false);
+            storeStatus.setActive(true);
             storeStatus.setBlocked(false);
 
             transactions.setSystemCommission(BigDecimal.ZERO);
@@ -196,6 +162,7 @@ public class PrepareObjects {
             storeRedabbo.setStoreConfiguration(storeConfiguration);
             storeRedabbo.setStatus(storeStatus);
             storeRedabbo.setTier(0);
+            storeRedabbo.setActivationStatus(StoreActivationStatus.ACTIVE);
             String toSave = "";
 
             try {
